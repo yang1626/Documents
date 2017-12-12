@@ -34,3 +34,33 @@ MyFunctionalComponent.defaultProps={
 };
 
 ```
+
+## import\export
+
+### export
+#### util.js
+```
+ // 具名export
+ const mutil=x=>x*x;
+
+ export {mutil};
+
+ export const add = (a,b)=>a+b; //行内
+
+ // 默认export
+
+ const minus =(a,b) => a-b;
+  1. export default minus; 
+  2. export {mutil ,minus as default}
+  3. export default (a,b)=> a-b;
+  4. export default class Header extends React.Component {}
+ ```
+### import
+```
+import {mutil} from './util.js'
+
+import defaultModule from './util.js' // defaultModule 为util.js默认export ，名称随意
+
+import anyName,{mutil} from './util.js'
+
+```
