@@ -71,24 +71,40 @@ import anyName,{mutil} from './util.js'
 ### 默认值和别名
 默认值用等号赋值
 ```
+    //对象
     const obj={a:0,b:1};
     const {a,c=2}=obj;
 
+    //数组
+    const arr=['android','ios','react'];
+    const [,,react,ionic='ionic'] = arr; //对于不需要的值留空（'android'，'ios'）
 ```
 别名使用冒号(:)
 
 ```
+    //对象
     const obj={a:0,b:1};
     const {a,b:otherName}=obj;
+
+    // 数组（直接使用别名）
+    const arr=['android','ios','react'];
+    const [,apple,react] = arr;
+    console.log(apple); //=>ios
 ```
 别名与默认值一起使用
 
 ```
+    //对象
     const obj={a:0,b:1};
     const {a,b:otherName=-1}=obj;
+
+    //数组
+    const arr=['android','ios','react'];
+    const [,apple='macos',react,ionic='ionic'] = arr;
 ```
 
 ### 示例
+#### 对象
 ```
 const person={
     name:'匿名',
@@ -106,4 +122,12 @@ console.log(`I'm ${name},${age}`);
 const {city,temp:temperature=-100} =person.location;
 
 console.log(`I'm in ${city},${temperature}℃`);
+```
+#### 数组
+```
+const shop=['Coffee(hot)','$2.00','$2.50','$2.75'];
+
+const [drink,,mediumCup,,superCup='$3.00'] = shop;
+
+console.log(`A medium ${drink} costs ${mediumCup},A super ${drink} costs ${superCup}`);
 ```
