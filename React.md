@@ -64,3 +64,46 @@ import defaultModule from './util.js' // defaultModule 为util.js默认export �
 import anyName,{mutil} from './util.js'
 
 ```
+
+## ES6 解构赋值（Destructuring）
+从数组和对象中按需提取属性值，对变量进行赋值，称为解构(destructuring)，适用于对象和数组。
+
+### 默认值和别名
+默认值用等号赋值
+```
+    const obj={a:0,b:1};
+    const {a,c=2}=obj;
+
+```
+别名使用冒号(:)
+
+```
+    const obj={a:0,b:1};
+    const {a,b:otherName}=obj;
+```
+别名与默认值一起使用
+
+```
+    const obj={a:0,b:1};
+    const {a,b:otherName=-1}=obj;
+```
+
+### 示例
+```
+const person={
+    name:'匿名',
+    age:18,
+    location:{
+        city:'Beijing',
+        // temp:-10
+    }
+};
+
+const {name,age} = person;
+
+console.log(`I'm ${name},${age}`);
+
+const {city,temp:temperature=-100} =person.location;
+
+console.log(`I'm in ${city},${temperature}℃`);
+```
